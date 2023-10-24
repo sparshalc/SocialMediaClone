@@ -1,0 +1,22 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-lg-8 ">
+      <%= render 'posts/status_box' %>
+      <hr>
+      <div class="text-center">
+        <h3 class="text-muted">Timeline </h3>
+        <small class="text-center text-muted">Last Refreshed <%= Time.now.strftime('%I:%M:%S %p') %></small>
+      </div>
+      <hr>
+      <div id="posts">
+        <% @posts.each do |post| %>
+          <%= render post %>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4 border">
+      <%= render 'posts/user_details'%>
+    </div>
+  </div>
+</div>

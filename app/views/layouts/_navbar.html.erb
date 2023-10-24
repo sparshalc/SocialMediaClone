@@ -1,0 +1,24 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2  text-light text-uppercase">Home</a></li>
+        <li><a href="#" class="nav-link px-5 text-light text-uppercase">About</a></li>
+      </ul>
+      <% if user_signed_in? %>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block  text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="mx-2 text-light"><%= current_user.email %></span>
+            <%= image_tag(current_user.image.attached? ? current_user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32", height: '32', class: 'rounded-circle')%>
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><%= link_to 'Profile', profile_path(current_user), class: 'dropdown-item' %></li>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item text-danger' %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>

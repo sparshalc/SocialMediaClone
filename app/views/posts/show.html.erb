@@ -1,0 +1,17 @@
+<div class="p-2">
+  <%= link_to :back do %>
+    <i class="bi bi-arrow-left h3"></i>
+  <% end %>
+</div>
+<%= render @post %>
+<%= render 'posts/likes', post: @post%>
+<div class="container">
+  <div id="comment-form">
+    <%= render 'comments/form' %>
+  </div>
+  <div id="comment">
+    <% @comment.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
+</div>

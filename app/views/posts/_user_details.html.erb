@@ -1,0 +1,7 @@
+<div id="user_details" class="user_details text-center mt-5">
+  <%= image_tag(current_user.image, width: '200px', class: 'rounded-circle')%>
+  <br>
+  <h3 class="text-muted mt-3 "><%= current_user.email %></h3>
+  <p class="text-muted "> Joined: <%= time_ago_in_words(current_user.created_at) + ' ago' %>  |  <%= pluralize(current_user.posts.count, 'post') %></p>
+  <%= link_to 'Edit Avatar', edit_member_personal_details_path, data: { controller: 'bs-modal' }, class: 'btn btn-primary w-100' %>
+</div>

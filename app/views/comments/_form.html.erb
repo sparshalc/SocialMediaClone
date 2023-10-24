@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <section class="mb-5">
+    <div class="card bg-light">
+      <div class="card-body">
+        <%= form_for([@post, @post.comments.build]) do |f| %>
+          <%= f.text_area :title, class: 'form-control',rows: "3", placeholder: "Join the discussion and leave a comment!"%>
+          <%= f.submit class: ' btn btn-dark mt-2 my-2'%>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>

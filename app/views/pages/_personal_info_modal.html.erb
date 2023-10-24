@@ -1,0 +1,17 @@
+<%= form_with model: current_user, url: update_member_personal_details_path, method: :patch do |form|%>
+  <div class="model-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group row">
+          <div class="col-lg-12">
+            <%= form.label :image%>
+            <%= form.file_field :image, type: "file", class: "form-control mt-2", id: "customFile" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= form.submit "Save Changes", data: { action: 'click->bootstrap#submitEnd'}, class: 'btn btn-primary'%>
+  </div>
+<% end %>

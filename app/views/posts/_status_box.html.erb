@@ -1,0 +1,19 @@
+<div class="status_box p-5">
+  <div class="d-flex gap-2">
+    <div class="status_image mt-2">
+      <%= image_tag(current_user.image, width: '52px', class: 'rounded-circle') %>
+    </div>
+    <div class="rounded status_box p-4 w-100" style="border: 1px dotted black;">
+      <%= link_to new_post_path, class: 'text-decoration-none', data: { controller: 'bs-modal' } do%>
+        <span class="text-decoration-none text-dark ">Whats on your mind, <%= current_user.name %>?</span>
+      <% end %>
+      <hr>
+      <span>
+        <i class="bi bi-images h3 mx-2"></i>Photo
+      </span>
+      <span class="mx-5">
+        <i class="bi bi-body-text h3 mx-2"></i>Body
+      </span>
+    </div>
+  </div>
+</div>
