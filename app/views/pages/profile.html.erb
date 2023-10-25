@@ -8,14 +8,37 @@
     <div class="row align-items-center flex-row-reverse">
       <div class="col-lg-6">
         <div class="about-text go-to">
-          <h3 class="dark-color">About <%= @user.email %></h3>
-          <h6 class="theme-color lead">Member since <%= time_ago_in_words(@user.created_at)%></h6>
+          <h3 class="dark-color"><%= @user.email %></h3>
+          <h6 class="theme-color lead">Joined  <%= time_ago_in_words(@user.created_at) + ' ago'%></h6>
+          <hr>
+          <div class="d-flex gap-5">
+            <div class="d-flex text-center flex-column">
+              <h4><%= @user.followers.count %></h4>
+              <div class="text-muted">
+                Followers
+              </div>
+            </div>
+            <div class="d-flex text-center flex-column">
+              <h4><%= @user.following.count %></h4>
+              <div class="text-muted">Following</div>
+            </div>
+          </div>
+          <hr>
+          <% if current_user.id != @user.id%>
+            <% if current_user.following?(@user) %>
+              <%= button_to "Unfollow", unfollow_path(@user), class:'btn btn-danger w-100 mt-2 mb-2' %>
+            <% elsif current_user.sent_follow_request_to?(@user)%>
+              <%= button_to "Cancel follow request", cancel_path(@user), class:'btn btn-danger w-100 mt-2 mb-2' %>
+            <% else %>
+              <%= button_to "Follow",  follow_path(@user), class:'btn btn-primary w-100 mt-2 mb-2' %>
+            <% end %>
+          <% end %>
           <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="about-avatar">
-          <%= image_tag(@user.image, class: 'rounded-circle mb-3', width: '450px') %>
+          <%= image_tag(@user.image.attached? ? @user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "450px", class: 'rounded-circle mb-1')%>
         </div>
       </div>
     </div>
