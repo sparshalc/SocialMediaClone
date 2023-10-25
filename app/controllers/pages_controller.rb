@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   def edit_personal_details;
   end
 
-
   def update_personal_details
     @user = current_user
     respond_to do |format|
@@ -17,6 +16,12 @@ class PagesController < ApplicationController
   
   def profile
     @user = User.find(params[:id])
+  end
+
+  def notification
+  end
+
+  def notification_reqs
   end
   
   private

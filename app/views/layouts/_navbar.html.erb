@@ -2,8 +2,8 @@
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2  text-light text-uppercase"><i class="bi bi-house-door-fill mx-2"></i> Home</a></li>
-        <li><a href="#" class="nav-link px-5 text-light text-uppercase"><i class="bi bi-bell-fill mx-2"></i> Notifications</a></li>
+        <li><a href="/" class="nav-link px-2  text-light text-uppercase"> Home</a></li>
+        <li><%= link_to 'Notifications', notification_path, class: 'nav-link px-5 text-light text-uppercase' %></li>
       </ul>
       <% if user_signed_in? %>
         <div class="dropdown text-end">
