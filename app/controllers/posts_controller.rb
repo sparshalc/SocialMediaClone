@@ -4,6 +4,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order('Created_at DESC')
+    if current_user
+      @notifications = current_user.notifications.limit(3)
+      current_user.notifications.mark_as_read!
+    end
   end
 
   def show
