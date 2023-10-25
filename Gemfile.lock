@@ -110,6 +110,7 @@ GEM
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
+    followability (1.1.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -253,6 +254,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
+  followability (~> 1.1)
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

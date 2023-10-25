@@ -1,7 +1,7 @@
 <div class="status_box p-5">
   <div class="d-flex gap-2">
     <div class="status_image mt-2">
-      <%= image_tag(current_user.image, width: '52px', class: 'rounded-circle') %>
+      <%= image_tag(current_user.image.attached? ? current_user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32", height: '32', class: 'rounded-circle')%>
     </div>
     <div class="rounded status_box p-4 w-100" style="border: 1px dotted black;">
       <%= link_to new_post_path, class: 'text-decoration-none', data: { controller: 'bs-modal' } do%>

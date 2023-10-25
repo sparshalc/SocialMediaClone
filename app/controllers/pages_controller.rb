@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def edit_personal_details;
   end
 
+
   def update_personal_details
     @user = current_user
     respond_to do |format|
