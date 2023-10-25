@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # root "pages#home"
   
   get 'profile/:id', to: 'pages#profile', as: 'profile'
+  get '/notifications', to: 'pages#notification', as: 'notification'
+  get '/follow/notifications', to: 'pages#notification_reqs', as: 'request_notification'
 
   get 'edit_personal_details', to: 'pages#edit_personal_details', as: 'edit_member_personal_details'
   patch 'update_personal_details', to: 'pages#update_personal_details', as: 'update_member_personal_details'

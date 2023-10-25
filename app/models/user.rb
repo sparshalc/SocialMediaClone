@@ -3,13 +3,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   followability
 
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
 
 
   def unfollow(user)

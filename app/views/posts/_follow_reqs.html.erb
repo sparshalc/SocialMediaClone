@@ -1,37 +1,18 @@
-<% if current_user.follow_requests.present? %>
-  <h3 class="text-center mt-5">Recent Activity</h3>
-<% else %>
-<% end %>
-<% if current_user %>
-  <hr>
-  <% current_user.follow_requests.each do |request| %>
-    <div class="d-flex justify-content-between">
-      <div class="req_details">
-        <b><%= request.followerable.email %></b> requested to follow you. 
-        <small>
-          <span class="badge rounded-pill text-bg-danger"><%= time_ago_in_words(request.created_at) + ' ago'%></span>
-        </small>
+<div class="container my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0 mt-4">Recent updates</h6>
+  <% current_user.follow_requests.limit(3).each do |request| %>
+    <div class="d-flex justify-content-between text-body-secondary pt-3 border-bottom">
+      <div class="pb-3 mb-0 small lh-sm">
+        <strong class="text-gray-dark"><%= link_to request.followerable.name, profile_path(request.followerable.id) %></strong>
+        requested to follow you. <small class="fw-light">(<%= time_ago_in_words(request.created_at)+ ' ago' %>)</small>
       </div>
-      <div class="req_actions">
+      <div class="req_actions d-flex mb-2">
         <%= button_to "Accept", accept_path(request.followerable), class:'btn btn-primary btn-sm' %>
-        <%= button_to "Decline", decline_path(request.followerable), class:'btn btn-danger mt-1 btn-sm' %>
+        <%= button_to "Decline", decline_path(request.followerable), class:'btn btn-danger mx-1 btn-sm' %>
       </div>
     </div>
-    <hr>
   <% end %>
-<% end %>
-<% if current_user.followers.count > 0%>
-  <div class="user-post-image white">
-    <h2 class="fw-bold mt-5">Recent Logs</h2>
-    <% current_user.followers.each do |user| %>
-      <div class="d-flex justify-content-between">
-        <div><%= link_to user.email, profile_path(user.id) %> started following you....</div>
-        <div class="btn">
-          <%= button_to "Unfollow", unfollow_path(user), class:'btn btn-danger' %>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <h2 class="fw-bold mt-5">No Recent followers.</h2>
-  </div>
-<% end %>
+  <small class="d-block text-end mt-3">
+    <a href="/notifications">All updates</a>
+  </small>
+</div>

@@ -17,7 +17,9 @@
     </div>
     <div class="col-lg-4 border">
       <%= render 'posts/user_details'%>
-      <%= render 'posts/follow_reqs' %>
+      <%= turbo_frame_tag "notifications" do %>
+        <%= render "notifications/notifications", user: current_user %>
+      <% end %>
     </div>
   </div>
 </div>
