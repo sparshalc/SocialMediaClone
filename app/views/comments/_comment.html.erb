@@ -4,7 +4,7 @@
       <% if comment.user.image.attached? %>
         <div class="flex-shrink-0"><%= image_tag(comment.user.image, class: 'rounded-circle', width: '50')%></div>
       <% else %>
-        <div class="flex-shrink-0"><%= image_tag('img/pen.png', width: '50')%></div>
+        <div class="flex-shrink-0">  <%= image_tag(comment.user.image.attached? ? comment.user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32px", class: 'rounded-circle')%></div>
       <% end %>
       <div class="ms-3">
         <div class="fw-bold"><%= comment.user.email %> <small class="text-muted mx-1  "> <%= time_ago_in_words(comment.created_at) + ' ago'%></small></div>

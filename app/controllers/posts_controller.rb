@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       if @post.save
         format.turbo_stream { flash.now[:notice] = "Post was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.turbo_stream { flash.now[:notice] = "Post was successfully updated!" }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render :edit, status: :unprocessable_entity }
       end
     end
   end
