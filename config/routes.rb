@@ -10,16 +10,18 @@ Rails.application.routes.draw do
     sessions: 'user/sessions',
     registrations: 'user/registrations'
   }
-  # root "pages#home"
+
+  get "pages/home"
   
   get 'profile/:id', to: 'pages#profile', as: 'profile'
+  get '/following/posts', to: 'pages#follower_posts', as: 'follwers_post'
+  get '/:id/followers', to: 'pages#followers', as: 'followers'
+  get '/:id/following', to: 'pages#following', as: 'following'
   get '/notifications', to: 'pages#notification', as: 'notification'
   get '/follow/notifications', to: 'pages#notification_reqs', as: 'request_notification'
 
   get 'edit_personal_details', to: 'pages#edit_personal_details', as: 'edit_member_personal_details'
   patch 'update_personal_details', to: 'pages#update_personal_details', as: 'update_member_personal_details'
-
-  get "up" => "rails/health#show", as: :rails_health_check
 
   post 'followability/:id/follow', to: 'followability#follow', as: 'follow'
   post 'followability/:id/unfollow', to: 'followability#unfollow', as: 'unfollow'
@@ -27,4 +29,5 @@ Rails.application.routes.draw do
   post 'followability/:id/decline', to: 'followability#decline', as: 'decline'
   post 'followability/:id/cancel', to: 'followability#cancel', as: 'cancel'
   
+  get "up" => "rails/health#show", as: :rails_health_check
 end

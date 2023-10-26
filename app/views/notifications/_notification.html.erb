@@ -1,8 +1,7 @@
 <div>
-  <hr>
   <% if unread %>
     <span class="badge bg-danger">Unread</span>
   <% end %>
-  <span><%= user.email %> just commented on <%= link_to post.title, post %></span>
+  <span><%= user.email %> just commented on <%= link_to post.title, post, data: { turbo_frame: '_top' } %></span>
   <hr>
 </div>

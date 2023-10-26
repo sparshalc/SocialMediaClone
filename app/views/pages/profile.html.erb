@@ -15,12 +15,14 @@
             <div class="d-flex text-center flex-column">
               <h4><%= @user.followers.count %></h4>
               <div class="text-muted">
-                Followers
+                <%= link_to 'Followers', followers_path, data: { controller: 'bs-modal' } %>
               </div>
             </div>
             <div class="d-flex text-center flex-column">
               <h4><%= @user.following.count %></h4>
-              <div class="text-muted">Following</div>
+              <div class="text-muted">
+                <%= link_to 'Following', following_path, data: { controller: 'bs-modal' } %>
+              </div>
             </div>
           </div>
           <hr>

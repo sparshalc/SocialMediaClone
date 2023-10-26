@@ -1,0 +1,14 @@
+<% @followers.each do |user| %>
+  <div class="d-flex gap-2">
+    <div class="user_image">
+      <%= image_tag(user.image.attached? ? user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32", height: '32', class: 'rounded-circle')%>
+    </div>
+    <div class="user_details d-flex flex-column">
+      <b><%= link_to user.email, profile_path(user.id) %></b>
+      <small class="text-muted fw-light">
+        Posts <%= user.posts.count %> | <%= time_ago_in_words(user.created_at) + ' ago'%>
+      </small>
+    </div>
+  </div>
+  <hr>
+<% end %>
