@@ -2,6 +2,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
+  validates :title, presence: true
+
   has_noticed_notifications
   after_create_commit { broadcast_notification }
 

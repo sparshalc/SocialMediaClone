@@ -16,7 +16,7 @@ class CommentNotification < Noticed::Base
   end
 
   def creator
-    comment.user
+    comment.user 
   end
 
   def post

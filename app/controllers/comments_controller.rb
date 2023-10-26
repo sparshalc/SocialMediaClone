@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
           format.turbo_stream { flash.now[:notice] = "Comment was successfully created." }
           format.html { redirect_to post_path(@post), notice: "Comment was successfully created." }
         else
-            redirect_to post_path(@post.id),alert: "Comment can't be blank!"
+          format.html { redirect_to post_path(@post), notice: "Comment can't be blank" }
         end
       end
   end
