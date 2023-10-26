@@ -9,6 +9,7 @@ class FollowabilityController < ApplicationController
     redirect_to profile_path(@user), notice: 'Follow request send'
   end
 
+
   def unfollow
     make_it_a_unfriend_request
 
