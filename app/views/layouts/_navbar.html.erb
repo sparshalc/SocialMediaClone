@@ -4,11 +4,24 @@
       <% if user_signed_in? %>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/" class="nav-link px-2  text-light text-uppercase"> Home</a></li>
-          <li><%= link_to 'Notifications', notification_path, class: 'nav-link px-5 text-light text-uppercase' %></li>
           <% if current_user.followers.count > 0 %>
             <li><%= link_to 'Following', follwers_post_path, class: 'nav-link text-light text-uppercase' %></li>
           <% end %>
         </ul>
+        <%= link_to request_notification_path, class: 'position-relative text-white mx-4', data: { controller: 'bs-modal' } do%>
+          <i class="bi bi-people-fill h4"></i>
+          <span class="position-absolute left-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <%= connection_notifications %>
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        <% end %>
+        <%= link_to notification_path, class: 'position-relative text-white mx-4', data: { controller: 'bs-modal' } do%>
+          <i class="bi bi-bell-fill h4"></i>
+          <span class="position-absolute left-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <%= post_notifications %>
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        <% end %>
         <div class="dropdown text-end">
           <a href="#" class="d-block  text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="mx-2 text-light"><%= current_user.email %></span>

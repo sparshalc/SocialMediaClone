@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "remote_modal" do%>
+  <%= render 'layouts/form_modal', modal_title: 'Notifications', form_partial: 'pages/follow_reqs' %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>
