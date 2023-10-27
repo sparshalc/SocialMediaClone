@@ -1,7 +1,7 @@
 <div class="texts d-flex justify-content-between">
   <p class="fw-bold text-muted mt-5 mb-4">Suggested for you</p>
-  <p class="fw-bold mt-5 mb-4"><%= link_to 'See All', suggestions_path %></p>
+  <p class="fw-bold mt-5 mb-4"><%= link_to 'See All', suggestions_path, data: { controller: 'bs-modal' } %></p>
 </div>
-<% users_not_followed.limit(3).each do |user|%>
+<% users_not_followed.limit(2).each do |user|%>
   <%= render 'suggested_users', user: user %>
 <% end %>
