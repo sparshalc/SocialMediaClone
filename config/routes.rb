@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "pages/home"
   
   get 'profile/:id', to: 'pages#profile', as: 'profile'
+  get '/people/suggestions', to: 'pages#suggestions', as: 'suggestions'
   get '/following/posts', to: 'pages#follower_posts', as: 'follwers_post'
   get '/:id/followers', to: 'pages#followers', as: 'followers'
   get '/:id/following', to: 'pages#following', as: 'following'

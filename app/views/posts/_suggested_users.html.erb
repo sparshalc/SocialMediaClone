@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between align-items-center">
+  <div class="main d-flex align-items-center gap-2">
+    <div class="user_image">
+      <%= image_tag(user.image.attached? ? user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32px", class: 'rounded-circle')%>
+    </div>
+    <div class="user_details">
+      <%= link_to user.email, profile_path(user.id) %>
+      <br>
+      <small class="text-muted">Joined: <%= time_ago_in_words(user.created_at) + ' ago'%> | <%= pluralize(user.posts.count, 'post') %></small>
+    </div>
+  </div>
+  <div class="actions">
+    <% if current_user.id != user.id%>
+      <% if current_user.following?(user) %>
+        <%= button_to "Unfollow", unfollow_path(user), class:'btn btn-danger w-100 mt-2 mb-2' %>
+      <% elsif current_user.sent_follow_request_to?(user)%>
+        <%= button_to "Cancel follow request", cancel_path(user), class:'btn btn-danger w-100 mt-2 mb-2' %>
+      <% else %>
+        <%= button_to "Follow",  follow_path(user), class:'btn btn-primary w-100 mt-2 mb-2' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<hr>

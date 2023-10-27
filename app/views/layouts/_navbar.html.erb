@@ -4,7 +4,9 @@
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/" class="nav-link px-2  text-light text-uppercase"> Home</a></li>
         <li><%= link_to 'Notifications', notification_path, class: 'nav-link px-5 text-light text-uppercase' %></li>
-        <li><%= link_to 'Following', follwers_post_path, class: 'nav-link text-light text-uppercase' %></li>
+        <% if current_user.followers.count > 0 %>
+          <li><%= link_to 'Following', follwers_post_path, class: 'nav-link text-light text-uppercase' %></li>
+        <% end %>
       </ul>
       <% if user_signed_in? %>
         <div class="dropdown text-end">

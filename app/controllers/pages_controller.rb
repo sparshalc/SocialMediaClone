@@ -39,6 +39,9 @@ class PagesController < ApplicationController
   def following
     @following = @user.following.all
   end
+
+  def suggestions
+  end
   
   private
 

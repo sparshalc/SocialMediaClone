@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="p-2">
+    <%= link_to :back do %>
+      <i class="bi bi-arrow-left h3"></i>
+    <% end %>
+  </div>
+  <h3 class="text-center text-muted fw-bold mt-5">Suggested</h3>
+  <p class="text-center text-muted fw-light ">Suggestions for <%= current_user.email %></p>
+  <hr>
+  <% users_not_followed.each do |user|%>
+    <%= render 'posts/suggested_users', user: user %>
+  <% end %>
+</div>

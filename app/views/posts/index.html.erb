@@ -16,8 +16,11 @@
     </div>
     <div class="col-lg-4 border">
       <%= render 'posts/user_details'%>
-      <%= turbo_frame_tag "notifications" do %>
-        <%= render "notifications/notifications", user: current_user %>
+      <%= render 'posts/suggestions'%>
+      <% if current_user.posts.count > 0 %>
+        <%= turbo_frame_tag "notifications" do %>
+          <%= render "notifications/notifications", user: current_user %>
+        <% end %>
       <% end %>
     </div>
   </div>
