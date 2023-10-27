@@ -1,13 +1,10 @@
 <div>
-  <% if unread %>
-    <span class="badge bg-danger">Unread</span>
-  <% end %>
-  <div class="d-flex justify-content-between">
+  <div class="d-flex gap-1">
+    <% if unread %>
+      <span class="badge bg-danger">Unread</span>
+    <% end %>
     <div class="user_details">
       <%= user.email %> just commented on <%= link_to post.title, post, data: { turbo_frame: '_top' } %>
-    </div>
-    <div class="text-muted">
-      <%= time_ago_in_words(notification.created_at) + ' ago'%>
     </div>
   </div>
   <hr>
