@@ -3,9 +3,14 @@
     <div class="col-lg-8 ">
       <%= render 'posts/status_box' %>
       <hr>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <%= render 'posts/search'%>
+      </form>
+      <hr>
       <div class="text-center">
         <h3 class="text-muted fw-bold">Timeline </h3>
         <small class="text-center text-muted">Last Refreshed <%= Time.now.strftime('%I:%M:%S %p') %></small>
+        <hr>
       </div>
       <hr>
       <div id="posts">
