@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   followability
 
-
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 

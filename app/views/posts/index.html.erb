@@ -13,7 +13,6 @@
         <small class="text-center text-muted">Last Refreshed <%= Time.now.strftime('%I:%M:%S %p') %></small>
         <hr>
       </div>
-      <hr>
       <div id="posts">
         <% @posts.each do |post| %>
           <%= render post %>

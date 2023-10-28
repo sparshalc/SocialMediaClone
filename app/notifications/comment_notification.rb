@@ -16,11 +16,11 @@ class CommentNotification < Noticed::Base
   end
 
   def creator
-    comment.user 
+    comment&.user
   end
 
   def post
-    comment.post
+    comment&.post
   end
 
   def url 

@@ -6,8 +6,18 @@ class Comment < ApplicationRecord
 
   has_noticed_notifications
   after_create_commit { broadcast_notification }
+  before_destroy :delete_notification
 
   private
+
+  def delete_notification
+    associated_notification = Notification.find_by(params: { message: { id: self.id } })
+
+    if associated_notification
+      associated_notification.destroy
+    end
+  end
+  
 
   def broadcast_notification
     return if user == post.user
