@@ -8,10 +8,14 @@ module ApplicationHelper
   end
 
   def post_notifications
-    current_user.notifications.unread.count
+    current_user.notifications.count
   end
   
   def connection_notifications
     current_user.follow_requests.count
+  end
+
+  def post_index_path
+    params[:controller] == "posts" && params[:action] == "index"
   end
 end

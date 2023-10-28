@@ -6,31 +6,30 @@ class FollowabilityController < ApplicationController
 
   def follow
     current_user.send_follow_request_to(@user)
-    redirect_to profile_path(@user), notice: 'Follow request send'
+    redirect_to request.referrer, notice: 'Follow request send'
   end
-
 
   def unfollow
     make_it_a_unfriend_request
 
     current_user.unfollow(@user)
-    redirect_to profile_path(@user), alert: "Unfollowed #{@user.email}"
+    redirect_to request.referrer, alert: "Unfollowed #{@user.email}"
   end
 
   def accept
     current_user.accept_follow_request_of(@user)
     make_it_a_friend_request
-    redirect_to profile_path(@user), notice: 'Follow requested accepted'
+    redirect_to request.referrer, notice: 'Follow requested accepted'
   end
 
   def decline
     current_user.decline_follow_request_of(@user)
-    redirect_to profile_path(@user), alert: 'Follow requested declined'
+    redirect_to request.referrer, alert: 'Follow requested declined'
   end
 
   def cancel
     current_user.remove_follow_request_for(@user)
-    redirect_to profile_path(@user)
+    redirect_to request.referrer
   end
 
   private

@@ -17,7 +17,6 @@ class Comment < ApplicationRecord
       associated_notification.destroy
     end
   end
-  
 
   def broadcast_notification
     return if user == post.user
