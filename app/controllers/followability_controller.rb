@@ -6,14 +6,14 @@ class FollowabilityController < ApplicationController
 
   def follow
     current_user.send_follow_request_to(@user)
-    redirect_to request.referrer, notice: 'Follow request send'
+    redirect_to request.referrer
   end
 
   def unfollow
     make_it_a_unfriend_request
 
     current_user.unfollow(@user)
-    redirect_to request.referrer, alert: "Unfollowed #{@user.email}"
+    redirect_to request.referrer
   end
 
   def accept

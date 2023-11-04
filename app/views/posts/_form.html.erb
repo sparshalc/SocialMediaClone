@@ -11,8 +11,15 @@
     </div>
     <div>
       <%= form.label :body, style: "display: block" %>
-      <%= form.text_area :body, class: 'form-control mt-2', cols: 980,  rows: "15"%>
+      <%= form.text_area :body, class: 'form-control mt-2', cols: 4,  rows: "6"%>
     </div>
+    <%  if @post.image.attached? %>
+      <div id="<%= dom_id(@post, :cover_image) %>">
+        <%= image_tag(@post.image, width: '100%', class: 'mt-2 mb-2') %>
+        <br>
+        <%= link_to 'Remove Image', post_cover_image_path(@post), data: { turbo_method: :delete, turbo_confirm: 'You sure?' } %>
+      </div>
+    <% end %>
     <div>
       <%= form.file_field :image, type: "file", class: "form-control mt-2", id: "customFile" %>
     </div>

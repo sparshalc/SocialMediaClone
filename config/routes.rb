@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resource :cover_image, only: [:destroy], module: :posts
   end
 
   resources :likes, only: [:create, :destroy]

@@ -2,38 +2,40 @@
   <div class="timeline-footer">
     <div class="likes">
       <hr>
-      <% like = current_user.likes.find_by(post: @post) %>
-      <div class="d-flex justify-content-between">
-        <div class="like_count d-flex">
-          <% if like.nil? %>
-            <div class="d-flex gap-2">
-              <%= button_to likes_path, params: { like: { post_id: @post.id } }, method: :post, class: 'btn' do %>
-                <i class="bi bi-hand-thumbs-up-fill h3"></i><%= pluralize(post.likes.count, 'like') %>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="d-flex gap-2">
-              <%= button_to like_path(like), method: :delete, class: 'btn' do %>
-                <i class="bi bi-hand-thumbs-down-fill h3 "></i> <%= pluralize(post.likes.count, 'like') %>
-              <% end %>
-            </div>
-          <% end %>
-          <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-chat-dots-fill h4"></i> <%= pluralize(post.comments.count, 'comment') %>
-          </a>
-          <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-share-fill h4"></i> Share
-          </a>
+      <%= turbo_frame_tag :likes do %>
+        <% like = current_user.likes.find_by(post: @post) %>
+        <div class="d-flex justify-content-between">
+          <div class="like_count d-flex">
+            <% if like.nil? %>
+              <div class="d-flex gap-2">
+                <%= button_to likes_path, params: { like: { post_id: @post.id } }, method: :post, class: 'btn' do %>
+                  <i class="bi bi-hand-thumbs-up-fill h3"></i><%= pluralize(post.likes.count, 'like') %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="d-flex gap-2">
+                <%= button_to like_path(like), method: :delete, class: 'btn' do %>
+                  <i class="bi bi-hand-thumbs-down-fill h3 "></i> <%= pluralize(post.likes.count, 'like') %>
+                <% end %>
+              </div>
+            <% end %>
+            <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-chat-dots-fill h4"></i> <%= pluralize(post.comments.count, 'comment') %>
+            </a>
+            <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-share-fill h4"></i> Share
+            </a>
+          </div>
+          <div class="like_avatars">
+            <% if @post.likes.present? %>
+              <div class="user-avatars">
+                <span class="text-muted">Liked by</span>
+                <% @post.likes.each do |like| %>
+                  <%= image_tag(like.user.image.attached? ? like.user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: '20px', class: ' rounded-circle mx-1')%>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="like_avatars">
-          <% if @post.likes.present? %>
-            <div class="user-avatars">
-              <span class="text-muted">Liked by</span>
-              <% @post.likes.each do |like| %>
-                <%= image_tag(like.user.image.attached? ? like.user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: '20px', class: ' rounded-circle mx-1')%>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
       <hr>
     </div>
   </div>
