@@ -1,8 +1,4 @@
-<div class="p-2">
-  <%= link_to :back do %>
-    <i class="bi bi-arrow-left h3"></i>
-  <% end %>
-</div>
+<%= render 'layouts/return_home' %>
 <% items = [
   ['Post', notification_path],
   ['Requests',request_notification_path]

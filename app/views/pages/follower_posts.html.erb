@@ -1,9 +1,5 @@
 <% content_for(:html_title) { 'For You' } %>
-<div class="p-2">
-  <%= link_to root_path do %>
-    <i class="bi bi-arrow-left h3"></i>
-  <% end %>
-</div>
+<%= render 'layouts/return_home' %>
 <h3 class="text-center text-muted fw-bold mt-5">Following</h3>
 <p class="text-center text-muted fw-light ">All your followers posts will pop here!</p>
 <hr>

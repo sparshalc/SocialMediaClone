@@ -1,9 +1,5 @@
 <% content_for(:html_title) { "#{@post.title.first(10)}...." } %>
-<div class="p-2">
-  <%= link_to :back do %>
-    <i class="bi bi-arrow-left h3"></i>
-  <% end %>
-</div>
+<%= render 'layouts/return_home' %>
 <%= render @post %>
 <%= render 'posts/likes', post: @post%>
 <div class="container">
