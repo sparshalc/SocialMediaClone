@@ -9,20 +9,22 @@
             <% if like.nil? %>
               <div class="d-flex align-items-center gap-2">
                 <%= button_to likes_path, params: { like: { post_id: @post.id } }, method: :post, class: 'btn' do %>
-                  <i class="bi bi-hand-thumbs-up-fill h3"></i><%= pluralize(post.likes.count, 'like') %>
+                  <i class="bi bi-hand-thumbs-up-fill h3"></i><span class="mx-2"><%= pluralize(post.likes.count, 'like') %></span>
                 <% end %>
               </div>
             <% else %>
               <div class="d-flex gap-2">
                 <%= button_to like_path(like), method: :delete, class: 'btn' do %>
-                  <i class="bi bi-hand-thumbs-down-fill h3 "></i> <%= pluralize(post.likes.count, 'like') %>
+                  <i class="bi bi-hand-thumbs-down-fill h3 "></i> <span class="mx-2"><%= pluralize(post.likes.count, 'like') %></span>
                 <% end %>
               </div>
             <% end %>
-            <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-chat-dots-fill h4"></i> <%= pluralize(post.comments.count, 'comment') %>
-            </a>
-            <a href="javascript:;" class="mx-3 mt-3 text-decoration-none text-dark"><i class="bi bi-share-fill h4"></i> Share
-            </a>
+            <div class="mt-2">
+              <i class="bi bi-chat-dots-fill h4"></i>
+              <span class="mx-2"><%= pluralize(post.comments.count, 'comment') %></span>
+              <i class="bi bi-eye-fill h3 mx-1"></i>
+              <span class="mx-2"><%= pluralize(post.views, 'view')%></span>
+            </div>
           </div>
           <div class="like_avatars">
             <% if @post.likes.present? %>

@@ -4,9 +4,10 @@
     <a href="javascript:;" class="mx-3 text-decoration-none text-dark">
       <i class="bi bi-hand-thumbs-up h4"></i> <%= pluralize(post.likes.count, 'like') %>
     </a>
-    <a href="javascript:;" class="mx-3 text-decoration-none text-dark"><i class="bi bi-chat-dots-fill h4"></i> <%= pluralize(post.comments.count, 'comment') %>
+    <a href="javascript:;" class="mx-3 text-decoration-none text-dark"><i class="bi bi-chat-dots h4"></i> <%= pluralize(post.comments.count, 'comment') %>
     </a>
-    <a href="javascript:;" class="mx-3 text-decoration-none text-dark"><i class="bi bi-share-fill h4"></i> Share
+    <a href="javascript:;" class="mx-3 text-decoration-none text-dark">
+      <i class="bi bi-eye h4 mx-1"></i><%= pluralize(post.views, 'view')%>
     </a>
   </div>
   <hr>
