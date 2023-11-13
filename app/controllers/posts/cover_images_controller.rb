@@ -5,7 +5,7 @@ class Posts::CoverImagesController < ApplicationController
   before_action :set_post
 
   def destroy
-    @post.image.purge_later
+    @post.images.purge_later
     respond_to do |format|
       format.turbo_stream {
         render turbo_stream: turbo_stream.remove(dom_id(@post, :cover_image))

@@ -13,15 +13,16 @@
       <%= form.label :body, style: "display: block" %>
       <%= form.text_area :body, class: 'form-control mt-2', cols: 4,  rows: "6"%>
     </div>
-    <%  if @post.image.attached? %>
+    <%  if @post.images.attached? %>
       <div id="<%= dom_id(@post, :cover_image) %>">
-        <%= image_tag(@post.image, width: '100%', class: 'mt-2 mb-2') %>
-        <br>
-        <%= link_to 'Remove Image', post_cover_image_path(@post), data: { turbo_method: :delete, turbo_confirm: 'You sure?' } %>
+        <% @post.images.each do |image| %>
+          <%= image_tag(image, width: '50px', height: '50px', class: ' mt-2 mb-2') %>
+        <% end %>
+        <%= link_to 'Remove Images', post_cover_image_path(@post), data: { turbo_method: :delete, turbo_confirm: 'You sure?' }, class: 'mx-2' %>
       </div>
     <% end %>
     <div>
-      <%= form.file_field :image, type: "file", class: "form-control mt-2", id: "customFile" %>
+      <%= form.file_field :images, type: "file", class: "form-control mt-2", id: "customFile", multiple: true, data: { controller: "handle-upload" } %>
     </div>
     <div>
       <%= form.number_field :user_id, value: current_user.id, id: 'post_user_id',class: 'form-control mt-2',type: :hidden%>
