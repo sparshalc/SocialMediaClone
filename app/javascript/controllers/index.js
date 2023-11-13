@@ -10,6 +10,9 @@ application.register("bootstrap", BootstrapController)
 import BsModalController from "./bs_modal_controller"
 application.register("bs-modal", BsModalController)
 
+import HandleUploadController from "./handle_upload_controller"
+application.register("handle-upload", HandleUploadController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

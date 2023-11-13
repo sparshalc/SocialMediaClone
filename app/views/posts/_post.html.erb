@@ -29,10 +29,14 @@
       <% end %>
     </div>
     <h5 class="p-1"><%= link_to post.title, post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' %></h5>
-    <p class="p-1"><%= link_to simple_format(post.body), post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' if !post.image.attached? %></p>
-    <% if post.image.attached?  %>
-      <div class="image_container">
-        <%= link_to image_tag(post.image, class: 'post_image'), post_path(post), data: { turbo_frame: '_top' } %>
+    <p class="p-1"><%= link_to simple_format(post.body), post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' if !post.images.attached? %></p>
+    <% if post.images.attached?  %>
+      <div class="post_images">
+        <% post.images.limit(2).each do |image| %>
+          <div class="image_container">
+            <%= link_to image_tag(image, class: 'post_image'), post_path(post), data: { turbo_frame: '_top' } %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
