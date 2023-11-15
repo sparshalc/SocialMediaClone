@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: [:create, :destroy]
+  resources :bookmarks, only: [:create, :destroy, :index]
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     registrations: 'user/registrations'

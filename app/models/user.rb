@@ -1,9 +1,13 @@
 class User < ApplicationRecord
   has_one_attached :image
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :notifications, as: :recipient, dependent: :destroy
+
+  with_options dependent: :destroy do 
+    has_many :posts
+    has_many :comments
+    has_many :likes
+    has_many :bookmarks
+    has_many :notifications, as: :recipient
+  end
 
   followability
 

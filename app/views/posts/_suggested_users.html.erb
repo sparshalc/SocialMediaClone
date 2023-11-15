@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <div class="main d-flex align-items-center gap-2">
     <div class="user_image">
-      <%= image_tag(user.image.attached? ? user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32px", class: 'rounded-circle')%>
+      <%= image_tag(user.image.attached? ? user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', size: "35x35", class: 'rounded-circle')%>
     </div>
     <div class="user_details">
       <%= link_to user.email, profile_path(user.id), data: { turbo_frame: '_top'} %>

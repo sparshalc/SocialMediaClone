@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between ">
     <div class="comment-details d-flex">
       <% if comment.user.image.attached? %>
-        <div class="flex-shrink-0"><%= image_tag(comment.user.image, class: 'rounded-circle', width: '50')%></div>
+        <div class="flex-shrink-0"><%= image_tag(comment.user.image, class: 'rounded-circle', size:'45x45')%></div>
       <% else %>
         <div class="flex-shrink-0">  <%= image_tag(comment.user.image.attached? ? comment.user.image : 'https://avatars.githubusercontent.com/u/116902652?v=', width: "32px", class: 'rounded-circle')%></div>
       <% end %>

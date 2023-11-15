@@ -4,6 +4,7 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/" class="nav-link px-2  text-light text-uppercase"> Home</a></li>
+          <li><a href="/bookmarks" class="mx-2 nav-link px-2  text-light text-uppercase"> Bookmarked</a></li>
           <% if current_user.followers.count > 0 %>
             <li><%= link_to 'Following', follwers_post_path, class: 'nav-link text-light text-uppercase' %></li>
           <% end %>

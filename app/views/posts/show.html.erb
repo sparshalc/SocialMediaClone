@@ -1,7 +1,6 @@
 <% content_for(:html_title) { "#{@post.title.first(10)}...." } %>
 <%= render 'layouts/return_home' %>
 <%= render @post %>
-<%= render 'posts/likes', post: @post%>
 <div class="container">
   <div id="comment-form">
     <%= render 'comments/form' %>

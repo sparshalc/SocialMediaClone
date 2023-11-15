@@ -1,0 +1,11 @@
+<% content_for(:html_title) { 'Bookmarks' } %>
+<%= render 'layouts/return_home' %>
+<h3 class="text-center text-muted fw-bold mt-5">Bookmarks</h3>
+<p class="text-center text-muted fw-light ">All your bookmarked posts will pop here!</p>
+<div class="container">
+  <hr>
+  <% @bookmark.each do |bookmark| %>
+    <%= render 'posts/post', post: bookmark.post %>
+    <hr>
+  <% end %>
+</div>
