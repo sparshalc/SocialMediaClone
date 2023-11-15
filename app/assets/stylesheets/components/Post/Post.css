@@ -24,3 +24,7 @@
 .post_images{
   display: flex;
 }
+
+.btn{
+  border: 0 !important;
+}

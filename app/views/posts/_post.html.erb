@@ -32,7 +32,7 @@
     <p class="p-1"><%= link_to simple_format(post.body), post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' if !post.images.attached? %></p>
     <% if post.images.attached?  %>
       <div class="post_images">
-        <% post.images.limit(2).each do |image| %>
+        <% post.images.each do |image| %>
           <div class="image_container">
             <%= link_to image_tag(image, class: 'post_image'), post_path(post), data: { turbo_frame: '_top' } %>
           </div>
@@ -40,6 +40,7 @@
       </div>
     <% end %>
   </div>
-  <%= render 'posts/like_home', post: post if post_index_path %>
-  <hr>
+  <%= turbo_frame_tag('post', :post) do %>
+    <%= render 'posts/action_buttons', post: post %>
+  <% end %>
 <% end %>

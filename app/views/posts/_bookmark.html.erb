@@ -1,0 +1,16 @@
+<% bookmark = current_user.bookmarks.find_by(post: post) %>
+<% if bookmark.nil? %>
+  <%= button_to bookmarks_path, params: { bookmark: { post_id: post } }, method: :post, class: 'btn' do %>
+    <div class="d-flex align-items-center">
+      <i class="bi bi-bookmark h3"></i>
+      <span class="mx-2 h5 fw-light"><%= pluralize(post.bookmarks.count, 'Bookmark') %></span>
+    </div>
+  <% end %>
+<% else %>
+  <%= button_to bookmark_path(bookmark), params: { bookmark: { post_id: post } }, method: :delete, class: 'btn' do %>
+    <div class="d-flex align-items-center">
+      <i class="bi bi-bookmark-fill h3"></i>
+      <span class="mx-2 h5 fw-light"><%= pluralize(post.bookmarks.count, 'Bookmark') %></span>
+    </div>
+  <% end %>
+<% end %>

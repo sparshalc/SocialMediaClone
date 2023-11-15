@@ -13,12 +13,11 @@ class Post < ApplicationRecord
   with_options dependent: :destroy do
     has_many :comments
     has_many :likes
+    has_many :bookmarks
   end
 
   validates :title, presence: true
   validate :validate_image_format
-
-  private
 
   def validate_image_format
     images.each do |image|
@@ -27,4 +26,5 @@ class Post < ApplicationRecord
       end
     end
   end
+
 end
