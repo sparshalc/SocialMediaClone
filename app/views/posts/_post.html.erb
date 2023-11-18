@@ -40,7 +40,5 @@
       </div>
     <% end %>
   </div>
-  <%= turbo_frame_tag('post', :post) do %>
-    <%= render 'posts/action_buttons', post: post %>
-  <% end %>
+  <%= render 'posts/action_buttons', post: post %>
 <% end %>

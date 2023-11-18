@@ -28,3 +28,7 @@
 .btn{
   border: 0 !important;
 }
+
+.bi-heart-fill:hover{
+  scale: 1.03;
+}

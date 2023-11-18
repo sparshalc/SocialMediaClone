@@ -15,6 +15,22 @@ module ApplicationHelper
     current_user.follow_requests.count
   end
 
+  def choose_path(post)
+    if post_index_path
+      list_comments_path(post)
+    else
+     post_path(post)
+    end
+  end
+
+  def stimulus_controller
+    if post_index_path
+      "bs-modal"
+    else
+      "focus-comment"
+    end
+  end
+
   def post_index_path
     params[:controller] == "posts" && params[:action] == "index"
   end

@@ -42,6 +42,11 @@ class PagesController < ApplicationController
 
   def suggestions
   end
+
+  def comments
+    @post = Post.find(params[:id])
+    @comment = @post.comments.all
+  end
   
   private
 

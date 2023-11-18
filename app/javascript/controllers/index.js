@@ -10,6 +10,9 @@ application.register("bootstrap", BootstrapController)
 import BsModalController from "./bs_modal_controller"
 application.register("bs-modal", BsModalController)
 
+import FocusCommentController from "./focus_comment_controller"
+application.register("focus-comment", FocusCommentController)
+
 import HandleUploadController from "./handle_upload_controller"
 application.register("handle-upload", HandleUploadController)
 

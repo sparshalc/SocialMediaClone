@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
   resources :bookmarks, only: [:create, :destroy, :index]
+  
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     registrations: 'user/registrations'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get '/:id/followers', to: 'pages#followers', as: 'followers'
   get '/:id/following', to: 'pages#following', as: 'following'
   get '/notifications', to: 'pages#notification', as: 'notification'
+  get '/posts/:id/comment', to: 'pages#comments', as: 'list_comments'
   get '/follow/notifications', to: 'pages#notification_reqs', as: 'request_notification'
 
   get 'edit_personal_details', to: 'pages#edit_personal_details', as: 'edit_member_personal_details'

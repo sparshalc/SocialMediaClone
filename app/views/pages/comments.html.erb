@@ -1,0 +1,5 @@
+<div class="container mt-5">
+  <% @comment.each do |comment| %>
+    <%= render 'comments/comments', comment: comment%>
+  <% end %>
+</div>

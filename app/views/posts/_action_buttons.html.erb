@@ -8,23 +8,23 @@
           <% if like.nil? %>
             <%= button_to likes_path, params: { like: { post_id: post.id } }, method: :post, class: 'btn' do %>
               <div class="d-flex align-items-center">
-                <i class="bi bi-heart h3"></i>
-                <span class="mx-2 h5 fw-light"><%= pluralize(post.likes.count, 'like') %></span>
+                <i class="bi bi-heart h3" style="color: red;"></i>
+                <span class="mx-2 h5 fw-light text-danger"><%= pluralize(post.likes.count, 'like') %></span>
               </div>
             <% end %>
           <% else %>
             <%= button_to like_path(like), method: :delete, class: 'btn' do %>
               <div class="d-flex align-items-center">
-                <i class="bi bi-heart-fill h3"></i>
-                <span class="mx-2 h5 fw-light"><%= pluralize(post.likes.count, 'like') %></span>
+                <i class="bi bi-heart-fill h3" style="color: red;"></i>
+                <span class="mx-2 h5 fw-light text-danger"><%= pluralize(post.likes.count, 'like') %></span>
               </div>
             <% end %>
           <% end %>
         </div>
         <div class="comment">
           <div class="d-flex align-items-center">
-            <i class="bi bi-chat-right-text-fill h3"></i>
-            <span class="mx-2 h5 fw-light"><%= pluralize(post.comments.count, 'Replies') %></span>
+            <i class="<%=  post.comments.count > 0 ? 'bi bi-chat-right-text-fill' : 'bi bi-chat-right-text'%> h3"></i>
+            <span class="mx-2 h5 fw-light"><%= link_to pluralize(post.comments.count, 'Replies'), choose_path(post), class: "text-decoration-none", data: { controller: stimulus_controller } %></span>
           </div>
         </div>
         <div class="bookmark" id="bookmark">

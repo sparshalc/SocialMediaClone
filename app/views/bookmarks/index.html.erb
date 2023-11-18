@@ -1,11 +1,19 @@
 <% content_for(:html_title) { 'Bookmarks' } %>
 <%= render 'layouts/return_home' %>
-<h3 class="text-center text-muted fw-bold mt-5">Bookmarks</h3>
-<p class="text-center text-muted fw-light ">All your bookmarked posts will pop here!</p>
-<div class="container">
-  <hr>
-  <% @bookmark.each do |bookmark| %>
-    <%= render 'posts/post', post: bookmark.post %>
+<% if @bookmark.present? %>
+  <h3 class="text-center text-muted fw-bold mt-5">Bookmarks</h3>
+  <p class="text-center text-muted fw-light ">All your bookmarked posts will pop here!</p>
+  <div class="container">
     <hr>
-  <% end %>
-</div>
+    <% @bookmark.each do |bookmark| %>
+      <%= render 'posts/post', post: bookmark.post %>
+      <hr>
+    <% end %>
+  </div>
+<% else %>
+  <div class="container mt-5">
+    <h3 class="text-center text-muted fw-bold">No bookmark found!</h3>
+    <p class="text-center text-muted fw-light ">Use  <i class="bi bi-bookmark h3 mx-1"></i>  to add a post to your bookmark.</p>
+    <hr>
+  </div>
+<% end %>
