@@ -2,9 +2,9 @@
   <div class="d-flex">
     <div class="user_details">
       <% if user&.email.present? && post&.title.present? %>
-        <%= user.email %> just commented on <%= link_to(post.title, post, data: { turbo_frame: '_top' }) %>
+        <%= user.email %> commented on <%= link_to(post.title, post, data: { turbo_frame: '_top' }) %>
       <% else %>
-        <span class="text-danger">User deleted the comment</span>
+        <span class="text-danger">The comment has been deleted by the user</span>
       <% end %>
       <% if unread %>
         <span class="badge bg-danger">Unread</span>

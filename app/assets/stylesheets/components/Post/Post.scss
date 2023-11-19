@@ -1,0 +1,86 @@
+.turbo-progress-bar {
+  height: 5px;
+  background: rgb(124, 13, 13);
+  background: linear-gradient(
+    90deg,
+    rgba(124, 13, 13, 1) 0%,
+    rgba(218, 0, 0, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.image_container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.post_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 2px;
+}
+
+.post_image:hover {
+  transform: scale(1.01);
+}
+
+.post_images {
+  display: flex;
+}
+
+.btn {
+  border: 0 !important;
+}
+
+.bi-heart-fill:hover {
+  transform: scale(1.03);
+}
+
+.comments_box {
+  position: relative;
+  overflow: hidden;
+
+  &.active::before {
+    position: absolute;
+    top: 0%;
+    background-color: #eee049;
+    height: 100%;
+    width: 0%;
+    z-index: -999;
+    right: 0%;
+    content: '';
+    animation: travel 1s ease;
+  }
+
+  &.active {
+    animation: disappear 1s ease;
+    transition: all 5s ease-in-out;
+    border-radius: 10px;
+
+    @keyframes disappear {
+      0% {
+        transform: scale(1.02);
+        padding: 10px;
+      }
+      80% {
+        transform: scale(1.02);
+        padding: 10px;
+      }
+      100% {
+      }
+    }
+  }
+}
+
+@keyframes travel {
+  0% {
+    right: 0%;
+    width: 100%;
+  }
+  100% {
+    right: 100%;
+    width: 100%;
+  }
+}
