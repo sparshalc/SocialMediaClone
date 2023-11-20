@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "posts" do %>
+  <%= render 'posts/post', post: @new_post %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

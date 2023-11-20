@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_15_034613) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_064712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_034613) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "views", default: 0
+    t.boolean "reposted", default: false
+    t.integer "reposted_from", null: false
   end
 
   create_table "users", force: :cascade do |t|

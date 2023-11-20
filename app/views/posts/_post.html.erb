@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <% if current_user.id == post.user.id && params[:controller] == "posts" && params[:action] == "index"%>
+      <% if current_user.id == post.user.id %>
         <div class="actions">
           <div class="dropdown">
             <button class="btn btn " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +28,14 @@
         </div>
       <% end %>
     </div>
-    <h5 class="p-1"><%= link_to post.title, post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' %></h5>
+    <% if post.reposted? %>
+      <h6 class="text-muted repost-badge d-flex justify-content-center align-items-center">
+        Reposted from <i class="bi bi-shuffle mx-2"></i>
+        <b><%= User.find(post.reposted_from).email %></b>
+      </h6>
+    <% end %>
+    <h5 class="p-1"><%= link_to post.title, post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' %>
+    </h5>
     <p class="p-1"><%= link_to simple_format(post.body), post, data: { turbo_frame: '_top' }, class: 'text-decoration-none text-dark' if !post.images.attached? %></p>
     <% if post.images.attached?  %>
       <div class="post_images">
