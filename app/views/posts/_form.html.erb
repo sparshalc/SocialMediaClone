@@ -27,6 +27,11 @@
     <div>
       <%= form.number_field :user_id, value: current_user.id, id: 'post_user_id',class: 'form-control mt-2',type: :hidden%>
     </div>
+    <% unless @post.persisted? %>
+      <div>
+        <%= form.number_field :reposted_from, value: current_user.id, id: 'post_user_id',class: 'form-control mt-2', type: :hidden %>
+      </div>
+    <% end %>
     <div>
       <%= form.submit class: 'btn btn-primary mt-2', data: { action: 'click->bootstrap#submitEnd'} %>
     </div>

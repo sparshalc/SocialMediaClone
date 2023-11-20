@@ -27,6 +27,12 @@
             <span class="mx-2 h5 fw-light"><%= link_to pluralize(post.comments.count, 'Replies'), choose_path(post), class: "text-decoration-none", data: { controller: stimulus_controller } %></span>
           </div>
         </div>
+        <div class="repost">
+          <%= link_to repost_post_path(post), data: { turbo_method: :post }, class: 'btn' do %>
+            <i class="bi bi-shuffle h3"></i>
+            <span class="mx-2 h5 fw-light">Repost</span>
+          <% end %>
+        </div>
         <div class="bookmark" id="bookmark">
           <%= render 'posts/bookmark', post: post %>
         </div>

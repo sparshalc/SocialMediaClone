@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy repost ]
   before_action :correct_user, only: %i[edit update destroy]
 
   def index
@@ -9,6 +9,20 @@ class PostsController < ApplicationController
     if current_user
       @notifications = current_user.notifications.limit(3)
       current_user.notifications.mark_as_read!
+    end
+  end
+
+  def repost
+    @new_post = @post.dup
+    @new_post.update(user_id: current_user.id) 
+    @new_post.update(reposted: true) 
+
+    respond_to do |format|
+      if @new_post.save
+        format.turbo_stream { flash.now[:notice] = "Post #{@post.title} reposted" }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -66,6 +80,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, images: [])
+      params.require(:post).permit(:title, :body, :reposted, :reposted_from, :user_id, images: [])
     end
 end
